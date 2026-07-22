@@ -1,9 +1,137 @@
-body {
-  background-color: green;
+:root {
+  color-scheme: light;
+  --accent: #ff6b35;
+  --accent-2: #ffd166;
+  --ink: #2f2f2f;
+  --soft: #fff8ee;
 }
 
-img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #ff7f50, #ffd166 60%, #ffeb8c);
+}
+
+.recipe-card {
+  width: min(900px, 100%);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe-card::before {
+  content: "";
+  position: absolute;
+  inset: -20% auto auto -10%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 12px 0 8px;
+  font-size: 2.3rem;
+  color: #1f1f1f;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+h2 {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.intro {
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
+
+ul,
+ol {
+  padding-left: 20px;
+}
+
+li {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.steps li {
+  padding: 8px 10px;
+  border-left: 4px solid var(--accent);
+  background: var(--soft);
+  border-radius: 0 10px 10px 0;
+  transition: transform 0.2s ease;
+}
+
+.steps li:hover {
+  transform: translateX(4px);
+}
+
+.visual {
+  width: 140px;
+  height: 140px;
+  margin: 24px auto 0;
+  display: grid;
+  place-items: center;
+  font-size: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff8c42, #ffd166);
+  box-shadow: 0 14px 30px rgba(255, 107, 53, 0.35);
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 8px rgba(255, 107, 53, 0.2);
+  }
+  to {
+    text-shadow: 0 0 18px rgba(255, 107, 53, 0.35);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 600px) {
+  .recipe-card {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
 }
